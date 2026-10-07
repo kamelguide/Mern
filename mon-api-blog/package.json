@@ -18,6 +18,8 @@
   "author": "Dr. Abdelweheb GUEDDES - École Polytechnique de Sousse",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.0"
+    "dotenv": "^18.0.6",
+    "express": "^4.21.0",
+    "mongoose": "^9.11.1"
   }
 }
