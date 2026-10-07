@@ -1,54 +1,43 @@
-// ==============================================================================
-// src/controllers/userController.js
-// Logique métier pour la gestion des utilisateurs (SoC - Couche Contrôleur)
-// ==============================================================================
+const User = require('../models/userModel');
 
-// Données utilisateurs isolées dans le contrôleur (en mémoire vive)
-let users = [
-  { id: 1, name: 'Sami', email: 'sami@poly.tn' },
-  { id: 2, name: 'Aya', email: 'aya@poly.tn' }
-];
-let prochainId = 3;
+const createUser = async (req, res) => {
+  try {
+    const { name, email, age, role } = req.body;
+    if (!name || !email) {
+      return res.status(400).json({ message: "Le nom et l'email sont requis" });
+    }
 
-// 1. Récupérer tous les utilisateurs (GET /api/users)
-const getAllUsers = (req, res) => {
-  res.status(200).json({ total: users.length, users });
-};
+    const exists = await User.findOne({ email });
+    if (exists) {
+      return res.status(409).json({ message: 'Cet email est deja utilise' });
+    }
 
-// 2. Récupérer un utilisateur par son identifiant unique (:id)
-const getUserById = (req, res) => {
-  const id = Number(req.params.id);
-  const user = users.find(u => u.id === id);
-
-  if (!user) {
-    return res.status(404).json({ error: `Utilisateur ${id} introuvable` });
+    const user = await User.create({ name, email, age, role });
+    res.status(201).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-
-  res.status(200).json(user);
 };
 
-// 3. Créer un nouvel utilisateur (POST /api/users)
-const createUser = (req, res) => {
-  const { name, email } = req.body;
-
-  // Validation des champs obligatoires
-  if (!name || !email) {
-    return res.status(400).json({ error: "Le nom et l'email sont obligatoires" });
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-
-  const nouvelUtilisateur = {
-    id: prochainId++,
-    name,
-    email
-  };
-
-  users.push(nouvelUtilisateur);
-  res.status(201).json({ message: 'Utilisateur créé avec succès', user: nouvelUtilisateur });
 };
 
-// Exportation CommonJS
-module.exports = {
-  getAllUsers,
-  getUserById,
-  createUser
+const getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'Utilisateur non trouve' });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
+
+module.exports = { createUser, getUsers, getUserById };

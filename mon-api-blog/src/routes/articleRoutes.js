@@ -19,5 +19,11 @@ router.get('/:id', articleController.getArticleById);
 // POST /api/articles (création d'un article)
 router.post('/', articleController.createArticle);
 
+// PUT /api/articles/:id (mise à jour d'un article)
+router.put('/:id', articleController.updateArticle);
+
+// DELETE /api/articles/:id (suppression d'un article)
+router.delete('/:id', articleController.deleteArticle);
+
 // Exportation du routeur configuré
 module.exports = router;

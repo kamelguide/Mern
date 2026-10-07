@@ -10,7 +10,7 @@ const userController = require('../controllers/userController');
 // Le préfixe '/api/users' est défini dans server.js.
 
 // GET /api/users (liste de tous les utilisateurs)
-router.get('/', userController.getAllUsers);
+router.get('/', userController.getUsers);
 
 // GET /api/users/:id (détail d'un utilisateur)
 router.get('/:id', userController.getUserById);
