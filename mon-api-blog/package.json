@@ -1,0 +1,23 @@
+{
+  "name": "mon-api-blog",
+  "version": "1.0.0",
+  "description": "API Blog avec architecture modulaire SoC (Express Router & Controllers) - MERN S1 Groupe Décalé",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "mern",
+    "express",
+    "api",
+    "soc",
+    "router",
+    "controller"
+  ],
+  "author": "Dr. Abdelweheb GUEDDES - École Polytechnique de Sousse",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "info": {
+    "name": "MERN Décalé S1 - API Blog En Mémoire",
+    "description": "Collection de tests Postman pour la Séance 1 du Cours MERN Décalé (École Polytechnique de Sousse)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Test Racine Serveur (GET /)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "2. Liste de tous les Articles (GET /api/articles)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/articles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "articles"]
+        }
+      }
+    },
+    {
+      "name": "3. Filtrer les Articles par Auteur (GET /api/articles?author=Aya)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/articles?author=Aya",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "articles"],
+          "query": [
+            { "key": "author", "value": "Aya" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Détail d'un Article par ID (GET /api/articles/:id)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/articles/2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "articles", "2"]
+        }
+      }
+    },
+    {
+      "name": "5. Créer un Article (POST /api/articles)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/articles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "articles"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Découverte de l'Architecture SoC avec Express\",\n  \"author\": \"Aya\"\n}"
+        }
+      }
+    },
+    {
+      "name": "6. Liste de tous les Utilisateurs (GET /api/users)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users"]
+        }
+      }
+    },
+    {
+      "name": "7. Détail d'un Utilisateur par ID (GET /api/users/:id)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/users/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users", "1"]
+        }
+      }
+    },
+    {
+      "name": "8. Créer un Utilisateur (POST /api/users)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Sami Ben Amor\",\n  \"email\": \"sami@poly.tn\"\n}"
+        }
+      }
+    }
+  ]
+}
